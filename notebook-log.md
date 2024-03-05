@@ -5,6 +5,7 @@ For homework due 2-20-2024, I am still unsure what alignment method to use for m
 <<<<<<< HEAD
 
 Code used to make distance and parsimony trees using my data:
+Below are the codes for both parsimony and distance methods. Neither are the most common used today (lieklihood methods). In these methods, you cannot infer timing as a measure of branch length, without further analysis and data. Parsimony is particularly complex and takes a lot more time than other methods.
 
 install.packages("adegenet", dep=TRUE)
 install.packages("phangorn", dep=TRUE)
