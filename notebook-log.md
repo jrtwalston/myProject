@@ -38,3 +38,12 @@ plot(tre.pars, cex=0.6)
 =======
 (clustalw_env) Josephs-MacBook-Pro-2:data jwalston$ clustalw2 -ALIGN -INFILE=primatesAA.fasta -OUTFILE=primatesAA-aligned.fasta -OUTPUT=FASTA
 >>>>>>> d96ba2c758810ec99983f5b7b96332fafad01807
+
+
+(clustalw_env) Josephs-MacBook-Pro-2:Desktop jwalston$ clustalw2 -ALIGN -INFILE=data/HeliamphoraNucleotides2.19.24 -OUTFILE=HeliamphoraNucleotidesAligned.fasta -OUTPUT=FASTA
+
+./raxml-ng --check --msa Heliamphoranucelotides2.19.24.fa --model GTR+G
+./raxml-ng --check --msa Heliamphoranucelotides2.19.24.fa/bad.fa.raxml.reduced.phy --model GTR+G
+
+
+3/21/24- I am continuing to have difficulty with getting this code to work. No matter where I put my nucelotide text file, I keep getting an error message that clustalw cannot find it; I think the error comes from the miniconda/clustalw environment. I had to do this step because I needed to align my data correctly. I chose RAXml because it is faster than IQtree according to some literature.
