@@ -45,5 +45,25 @@ plot(tre.pars, cex=0.6)
 ./raxml-ng --check --msa Heliamphoranucelotides2.19.24.fa --model GTR+G
 ./raxml-ng --check --msa Heliamphoranucelotides2.19.24.fa/bad.fa.raxml.reduced.phy --model GTR+G
 
+Below is the line of code used to check that my aligned nucleotides are all good to go
+../raxml-ng_v1.2.1_macos_x86_64/raxml-ng --check --msa HeliamphoraNucleotidesAligned.fasta --model GTR+G
 
-3/21/24- I am continuing to have difficulty with getting this code to work. No matter where I put my nucelotide text file, I keep getting an error message that clustalw cannot find it; I think the error comes from the miniconda/clustalw environment. I had to do this step because I needed to align my data correctly. I chose RAXml because it is faster than IQtree according to some literature.
+This is the line of code used to make the raxml tree
+(clustalw_env) Josephs-MacBook-Pro-2:myProject jwalston$ ../raxml-ng_v1.2.1_macos_x86_64/raxml-ng --msa HeliamphoraNucleotidesAligned.fasta --model GTR+G --prefix T3 --threads 2 --seed 2
+
+Here is the line of code used to make the IQTree:
+iqtree-1.6.12-MacOSX/bin/iqtree -s HeliamphoraNucleotidesAligned.fasta
+
+Here is the R-code that was used to plot the Raxml and IQTREE
+phy <- read.tree(file="/Users/jwalston/Desktop/MyProject/T3.raxml.bestTree")
+plot(phy, cex=0.6)
+
+phy = root(phy, outgroup="MN428598.1")
+plot(phy, cex=0.6)
+
+#iqtree
+phy2 <- read.tree(file="/Users/jwalston/Desktop/MyProject/HeliamphoraNucleotidesAligned.fasta.treefile")
+plot(phy2, cex=0.6)
+
+phy3 = root(phy2, outgroup="MN428598.1")
+plot(phy3, cex=0.6)
