@@ -67,3 +67,30 @@ plot(phy2, cex=0.6)
 
 phy3 = root(phy2, outgroup="MN428598.1")
 plot(phy3, cex=0.6)
+
+
+Mr. Bayes code (it worked):
+
+First, take your aligned data (HeliamphoraNucleotidesAligned.fasta) and convert it a nexus file. I used http://phylogeny.lirmm.fr/phylo_cgi/data_converter.cgi. It will spit out text that you put in a text file and label it with .nex at the end. This is the file that you will use in MrBayes.
+
+which mb
+cd Desktop
+cd MyProject
+
+and then i pasted this at the bottom of the nexus document:
+begin mrbayes;
+ set autoclose=yes;
+ prset brlenspr=unconstrained:exp(10.0);
+ prset shapepr=exp(1.0);
+ prset tratiopr=beta(1.0,1.0);
+ prset statefreqpr=dirichlet(1.0,1.0,1.0,1.0);
+ lset nst=2 rates=gamma ngammacat=4;
+ mcmcp ngen=10000 samplefreq=10 printfreq=100 nruns=1 nchains=3 savebrlens=yes;
+ outgroup MN428598.1;
+ mcmc;
+ sumt;
+end;
+
+note how I changed the outgroup (line 87) to the outgroup of my data
+code continued:
+mb HeliamphoraNucleotidesAligned.nex
