@@ -97,3 +97,15 @@ end;
 note how I changed the outgroup (line 87) to the outgroup of my data
 code continued:
 mb HeliamphoraNucleotidesAligned.nex
+
+
+Redoing all the steps (align .... ) for 26S Gene for final project
+Code used to align:
+
+jwalston$ conda activate /Users/jwalston/miniconda3/envs/clustalw_env
+(clustalw_env) Josephs-MacBook-Pro-2:myProject jwalston$ clustalw2 -ALIGN -INFILE=Heliamphora26SNucleotides -OUTFILE=Heliamphora26SNucleotidesAligned.fasta -OUTPUT=FASTA
+
+Next step is to use RaxML. First I had to deactivate conda by doing "conda deactivate"
+Then, I found my folder with RaxML downloaded and moved my aligned fasta file into that folder.
+Then, I ran this code: (base) Josephs-MacBook-Pro-2:raxml-ng_v1.2.1_macos_x86_64 jwalston$ ./raxml-ng --check --msa Heliamphora26SNucleotidesAligned.fasta --model GTR+G
+I reactivated Conda and then ran this code to make the RaxML tree: (clustalw_env) Josephs-MacBook-Pro-2:raxml-ng_v1.2.1_macos_x86_64 jwalston$  ../raxml-ng_v1.2.1_macos_x86_64/raxml-ng --msa Heliamphora26SNucleotidesAligned.fasta --model GTR+G --prefix T4 --threads 2 --seed 2
