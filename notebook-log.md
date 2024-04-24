@@ -109,3 +109,34 @@ Next step is to use RaxML. First I had to deactivate conda by doing "conda deact
 Then, I found my folder with RaxML downloaded and moved my aligned fasta file into that folder.
 Then, I ran this code: (base) Josephs-MacBook-Pro-2:raxml-ng_v1.2.1_macos_x86_64 jwalston$ ./raxml-ng --check --msa Heliamphora26SNucleotidesAligned.fasta --model GTR+G
 I reactivated Conda and then ran this code to make the RaxML tree: (clustalw_env) Josephs-MacBook-Pro-2:raxml-ng_v1.2.1_macos_x86_64 jwalston$  ../raxml-ng_v1.2.1_macos_x86_64/raxml-ng --msa Heliamphora26SNucleotidesAligned.fasta --model GTR+G --prefix T4 --threads 2 --seed 2
+Next, I ran IQTree. I amde sure to put my aligned sequences file into the IQTree folder and its subfolder called bin. Here is the code for making IQTree: (base) Josephs-MacBook-Pro-2:bin jwalston$ ./iqtree -s Heliamphora26SNucleotidesAligned.fasta
+
+
+Now that I have my RaxML and IQTrees made, I go to R to create the tree figures.
+###This was the code used to make the RaxML tree:
+
+#raxml26s
+
+phy <- read.tree(file="/Users/jwalston/Desktop/MyProject/T4.raxml.bestTree")
+plot(phy, cex=0.6)
+phy = root(phy, outgroup="MN428574.1")
+plot(phy, cex=0.6)
+
+newtips2 <- c("Darlingtonia californica", "Heliamphora huberi", "Heliamphora chimantensis", "Heliamphora ciliata", "Heliamphora pulchella", "Heliamphora minor var. pilosa", "Heliamphora tatei", "Heliamphora ceracea", "Heliamphora hispida", "Heliamphora neblinae", "Heliamphora parva", "Heliamphora nutans", "Heliamphora elongata", "Heliamphora arenicola", "Heliamphora ionasi", "Heliamphora sarracenioides", "Heliamphora exappendiculata", "Heliamphora sp. Akopan Tepui", "Heliamphora uncinata", "Heliamphora glabra", "Heliamphora sp. Angasima Tepui", "Heliamphora purpurascens", "Heliamphora collina", "Heliamphora folliculata", "Heliamphora heterodoxa")
+phy$tip.label <- newtips2
+plot(phy)
+
+###Here is the code used to make the IQtree.
+
+#iqtree26s
+
+phy2 <- read.tree(file="/Users/jwalston/Desktop/MyProject/Heliamphora26SNucleotidesAligned.fasta.treefile")
+plot(phy2, cex=0.6)
+
+phy3 = root(phy2, outgroup="MN428574.1")
+plot(phy3, cex=0.6)
+newtips<- c("Heliamphora sp. Akopan Tepui", "Heliamphora exappendiculata", "Heliamphora glabra", "Heliamphora folliculata", "Heliamphora collina", "Heliamphora sarracenioides", "Heliamphora heterodoxa", "Heliamphora arenicola", "Heliamphora ionasi", "Heliamphora elongata", "Heliamphora nutans", "Heliamphora neblinae", "Heliamphora parva", "Heliamphora hispida", "Heliamphora ceracea", "Heliamphora tatei", "Heliamphora chimantensis", "Heliamphora ciliata", "Heliamphora huberi", "Heliamphora pulchella", "Heliamphora minor var. pilosa", "Darlingtonia californica", "Heliamphora sp. Angasima Tepui", "Heliamphora purpurascens", "Heliamphora uncinata")
+phy3$tip.label <- newtips
+plot(phy3)
+
+The line of code saying "root" roots the tree with its outgroup. The "newtips" portion changes the tip labels to their actual scientific names.
