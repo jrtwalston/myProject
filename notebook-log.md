@@ -98,6 +98,13 @@ note how I changed the outgroup (line 87) to the outgroup of my data
 code continued:
 mb HeliamphoraNucleotidesAligned.nex
 
+Astral homework
+
+ java -jar astral.5.7.8.jar -i Desktop/myProject/HeliamphoraAlignedNucelotides.FASTA
+  java -jar astral.5.7.8.jar
+  java -jar astral.5.7.8.jar -i in.tree -o out.tre
+  java -jar astral.5.7.8.jar -i in.tree -o out.tre 2>out.log
+
 
 Redoing all the steps (align .... ) for 26S Gene for final project
 Code used to align:
