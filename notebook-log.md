@@ -14,14 +14,16 @@ jwalston$ conda activate /Users/jwalston/miniconda3/envs/clustalw_env
 
 Next step is to use RaxML. First I had to deactivate conda by doing "conda deactivate"
 Then, I found my folder with RaxML downloaded and moved my aligned fasta file into that folder.
+### code to make RAxML tree in terminal
 Then, I ran this code: (base) Josephs-MacBook-Pro-2:raxml-ng_v1.2.1_macos_x86_64 jwalston$ ./raxml-ng --check --msa Heliamphora26SNucleotidesAligned.fasta --model GTR+G
 I reactivated Conda and then ran this code to make the RaxML tree: (clustalw_env) Josephs-MacBook-Pro-2:raxml-ng_v1.2.1_macos_x86_64 jwalston$  ../raxml-ng_v1.2.1_macos_x86_64/raxml-ng --msa Heliamphora26SNucleotidesAligned.fasta --model GTR+G --prefix T4 --threads 2 --seed 2
-Next, I ran IQTree. I amde sure to put my aligned sequences file into the IQTree folder and its subfolder called bin. Here is the code for making IQTree: (base) Josephs-MacBook-Pro-2:bin jwalston$ ./iqtree -s Heliamphora26SNucleotidesAligned.fasta
+### code to make IQTree tree in terminal
+Next, I ran IQTree. I made sure to put my aligned sequences file into the IQTree folder and its subfolder called bin. Here is the code for making IQTree: (base) Josephs-MacBook-Pro-2:bin jwalston$ ./iqtree -s Heliamphora26SNucleotidesAligned.fasta
 
 
 Now that I have my RaxML and IQTrees made, I go to R to create the tree figures.
 
-### This was the code used to make the RaxML tree:
+### This was the code used to make the RaxML tree in R:
 
 #raxml26s
 
@@ -34,7 +36,7 @@ newtips2 <- c("Darlingtonia californica", "Heliamphora huberi", "Heliamphora chi
 phy$tip.label <- newtips2
 plot(phy)
 
-### Here is the code used to make the IQtree.
+### Here is the code used to make the IQtree in R:
 
 #iqtree26s
 
